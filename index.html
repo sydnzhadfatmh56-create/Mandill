@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست کارها - To-Do List</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">📝 لیست کارهای من</h1>
+                <p class="subtitle">مدیریت کارهایت به صورت هوشمند</p>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- بخش ورودی -->
+            <section class="input-section">
+                <div class="input-container">
+                    <input 
+                        type="text" 
+                        id="taskInput" 
+                        class="task-input" 
+                        placeholder="کار جدید را بنویسید..."
+                        maxlength="100"
+                    >
+                    <button id="addBtn" class="btn btn-add">
+                        <span class="btn-icon">➕</span>
+                        <span class="btn-text">افزودن</span>
+                    </button>
+                </div>
+                <div class="input-info">
+                    <span id="charCount">0</span>/100
+                </div>
+            </section>
+
+            <!-- بخش فیلتر و جستجو -->
+            <section class="filter-section">
+                <div class="filter-container">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="🔍 جستجو در کارها..."
+                    >
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">
+                            همه
+                        </button>
+                        <button class="filter-btn" data-filter="active">
+                            ✏️ فعال
+                        </button>
+                        <button class="filter-btn" data-filter="completed">
+                            ✅ انجام شده
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- آمار کارها -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalCount">0</div>
+                    <div class="stat-label">کل کارها</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="activeCount">0</div>
+                    <div class="stat-label">کارهای فعال</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="completedCount">0</div>
+                    <div class="stat-label">انجام شده</div>
+                </div>
+            </section>
+
+            <!-- لیست کارها -->
+            <section class="tasks-section">
+                <div id="tasksList" class="tasks-list">
+                    <div class="empty-state">
+                        <p class="empty-icon">📭</p>
+                        <p class="empty-text">هنوز کار اضافه نشده!</p>
+                        <p class="empty-hint">شروع کنید با نوشتن کار جدید</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- دکمه‌های اقدام -->
+            <section class="actions-section" id="actionsSection" style="display: none;">
+                <button id="clearCompletedBtn" class="btn btn-secondary">
+                    🗑️ حذف کارهای انجام شده
+                </button>
+                <button id="clearAllBtn" class="btn btn-danger">
+                    ⚠️ پاک کردن همه
+                </button>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>ساخته شده با ❤️</p>
+            <p class="version">نسخه 1.0.0</p>
+        </footer>
+    </div>
+
+    <!-- Modal برای تأیید حذف -->
+    <div id="confirmModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3 class="modal-title">⚠️ تأیید</h3>
+            <p class="modal-message" id="modalMessage">آیا مطمئن هستید؟</p>
+            <div class="modal-actions">
+                <button id="confirmBtn" class="btn btn-danger">حذف</button>
+                <button id="cancelBtn" class="btn btn-secondary">انصراف</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
